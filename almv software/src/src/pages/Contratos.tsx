@@ -1,4 +1,4 @@
-// --- CORRECCIÓN DE COMPATIBILIDAD ---
+import React, { useState, useMemo, useCallback, useEffect } from 'react';// --- CORRECCIÓN DE COMPATIBILIDAD ---
 // Se eliminan los 'imports' de ESM ('import React from "react"') para asegurar la compatibilidad
 // con entornos de ejecución (como Canvas) que cargan React y ReactDOM a través de etiquetas <script>.
 // En dichos entornos, 'React' y 'ReactDOM' están disponibles como variables globales.
