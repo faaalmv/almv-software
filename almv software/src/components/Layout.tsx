@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 
 // Iconos simplificados para el menú
-const Icono = ({ children }) => <span style={{ marginRight: '10px' }}>{children}</span>;
+const Icono = ({ children }) => <span style={{ marginRight: '10px', width: '20px', textAlign: 'center' }}>{children}</span>;
 
 export default function Layout() {
   const navLinkStyle = ({ isActive }) => ({
@@ -10,7 +10,7 @@ export default function Layout() {
     alignItems: 'center',
     padding: '12px 16px',
     color: isActive ? 'white' : '#374151',
-    backgroundColor: isActive ? '#3b82f6' : 'white',
+    backgroundColor: isActive ? '#3b82f6' : 'transparent',
     borderRadius: '8px',
     fontWeight: isActive ? '600' : '500',
     textDecoration: 'none',
@@ -23,38 +23,44 @@ export default function Layout() {
       {/* Sidebar (Basado en menuPrincipal.html) */}
       <aside style={{ width: '260px', backgroundColor: 'white', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'column' }}>
         <div style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', textAlign: 'center' }}>
-          {/* Aquí puedes poner tu logo */}
-          <h2 style={{ color: '#2c3e50' }}>ALMV FAA</h2>
+          <img 
+            src="https://hcg.gob.mx/hcg/sites/hcgtransparencia.dd/files/styles/boletines_galeria_eventos/public/imgEventosCS/Logotipo%20HCG_2.jpg?itok=BxoX-M0A" 
+            alt="Logo HCG" 
+            style={{ width: '80%', height: 'auto', objectFit: 'contain' }} 
+          />
         </div>
         <nav style={{ padding: '1rem', flexGrow: 1 }}>
           <NavLink to="/app" style={navLinkStyle} end>
             <Icono>🏠</Icono><span>Dashboard</span>
           </NavLink>
-          <NavLink to="/app/inventario" style={navLinkStyle}>
-            <Icono>📦</Icono><span>Inventario</span>
+          <NavLink to="/app/entradas" style={navLinkStyle}>
+            <Icono>📥</Icono><span>Entradas</span>
           </NavLink>
           <NavLink to="/app/salidas" style={navLinkStyle}>
             <Icono>🚚</Icono><span>Salidas</span>
           </NavLink>
-          <NavLink to="/app/entradas" style={navLinkStyle}>
-            <Icono>📥</Icono><span>Entradas</span>
-          </NavLink>
           <NavLink to="/app/contratos" style={navLinkStyle}>
             <Icono>📄</Icono><span>Contratos</span>
           </NavLink>
-          <NavLink to="/app/financieros" style={navLinkStyle}>
+          <NavLink to="/app/recursos-financieros" style={navLinkStyle}>
             <Icono>💰</Icono><span>Recursos Financieros</span>
           </NavLink>
-          <NavLink to="/app/programacion" style={navLinkStyle}>
+          <NavLink to="/app/programacion-mensual" style={navLinkStyle}>
             <Icono>📅</Icono><span>Programación Mensual</span>
           </NavLink>
-          {/* Agrega más enlaces para el resto de tus vistas */}
+           <NavLink to="/app/entregas-mensuales" style={navLinkStyle}>
+            <Icono>📦</Icono><span>Entregas Mensuales</span>
+          </NavLink>
         </nav>
+         <div style={{ padding: '1rem', borderTop: '1px solid #e5e7eb', textAlign: 'center' }}>
+            <p style={{ fontSize: '0.75rem', color: '#6b7280' }}>
+                © 2025 HCG - ALMV
+            </p>
+        </div>
       </aside>
 
       {/* Main Content Area */}
       <main style={{ flex: 1, padding: '30px', overflowY: 'auto' }}>
-        {/* El Outlet renderizará el componente de la ruta activa (ej: <Entradas />) */}
         <Outlet /> 
       </main>
     </div>
